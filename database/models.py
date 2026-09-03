@@ -101,23 +101,8 @@ def create_lesson(
     result = lessons_collection.insert_one(lesson)
 
     return result.inserted_id
-
-
-# if __name__ == "__main__":
-
-    # student_id = create_student(
-    #     name="Test Student",
-    #     education_level="Beginner",
-    #     preferred_language="Hindi",
-    #     learning_goal="Learn Machine Learning",
-    #     preferred_style="Visual"
-    # )
-
-    # print("Student created successfully!")
-    # print("Student ID:", student_id)
-
-
-    # ==========================================
+    
+# ==========================================
 # LEARNING SESSION
 # ==========================================
 
@@ -286,57 +271,3 @@ def create_recommendation(
     )
 
     return result.inserted_id
-if __name__ == "__main__":
-    # Create student
-    student_id = create_student(
-        name="Test Student",
-        education_level="Beginner",
-        preferred_language="Hindi",
-        learning_goal="Learn Machine Learning",
-        preferred_style="Visual"
-    )
-
-    print("Student created:", student_id)
-
-    # Create document
-    document_id = create_document(
-        student_id=student_id,
-        filename="ml_notes.pdf",
-        file_type="PDF",
-        title="Machine Learning Notes",
-        subject="Machine Learning",
-        language="English"
-    )
-
-    print("Document created:", document_id)
-
-    # Create lesson
-    lesson_id = create_lesson(
-    student_id=student_id,
-    topic="Introduction to Machine Learning",
-    difficulty="Beginner",
-    language="English",
-    duration_minutes=30,
-    lesson_plan=[
-        "Introduction",
-        "Types of Machine Learning",
-        "Supervised Learning",
-        "Unsupervised Learning",
-        "Short Quiz"
-    ],
-    document_id=document_id
-)
-
-    print("Lesson created:", lesson_id)
-
-    # Create progress
-    progress_id = create_progress(
-        student_id=student_id,
-        topic="Machine Learning",
-        progress_percentage=40,
-        status="In Progress"
-    )
-
-    print("Progress created:", progress_id)
-
-    print("\nAll database tests completed successfully!")
