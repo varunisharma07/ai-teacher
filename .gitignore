@@ -1,3 +1,11 @@
 .env
+
+venv/
 __pycache__/
 *.pyc
+
+chroma_db/
+temp_hackathon/
+uploaded_documents/
+
+test.txt

@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Teacher</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= LANDING PAGE ================= -->
+
+<div id="landingPage" class="page active">
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <nav class="landing-nav">
+
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            AI<span>Teacher</span>
+        </div>
+
+        <div class="nav-actions">
+
+            <button
+                class="ghost-btn"
+                onclick="showAuth('login')"
+            >
+                Sign In
+            </button>
+
+            <button
+                class="primary-btn small-btn"
+                onclick="showAuth('signup')"
+            >
+                Get Started
+            </button>
+
+        </div>
+
+    </nav>
+
+    <section class="hero-section">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✨ Your personal AI-powered teacher
+            </div>
+
+            <h1>
+                Learn smarter.
+                <br>
+                <span>Understand everything.</span>
+            </h1>
+
+            <p>
+                Upload your study material, learn through AI-generated
+                lessons, get visual explanations, ask questions and
+                test your knowledge.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn hero-btn"
+                    onclick="showAuth('signup')"
+                >
+                    Start Learning
+                    <span>→</span>
+                </button>
+
+                <button
+                    class="outline-btn hero-btn"
+                    onclick="showAuth('login')"
+                >
+                    I already have an account
+                </button>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+                    <strong>AI</strong>
+                    <span>Personalized</span>
+                </div>
+
+                <div>
+                    <strong>RAG</strong>
+                    <span>Context-aware</span>
+                </div>
+
+                <div>
+                    <strong>24/7</strong>
+                    <span>Always learning</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="orb-ring ring-one"></div>
+            <div class="orb-ring ring-two"></div>
+
+            <div class="ai-orb">
+                <div class="orb-core">✦</div>
+            </div>
+
+            <div class="floating-card card-top">
+
+                <span>🧠</span>
+
+                <div>
+                    <strong>Smart Learning</strong>
+                    <small>Adapts to you</small>
+                </div>
+
+            </div>
+
+            <div class="floating-card card-bottom">
+
+                <span>🎥</span>
+
+                <div>
+                    <strong>AI Lessons</strong>
+                    <small>Visual + Audio</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- ================= AUTH PAGE ================= -->
+
+<div id="authPage" class="page">
+
+    <div class="auth-container">
+
+        <button
+            class="back-btn"
+            onclick="showPage('landingPage')"
+        >
+            ← Back
+        </button>
+
+        <div class="auth-card">
+
+            <div class="logo centered">
+                <span class="logo-icon">✦</span>
+                AI<span>Teacher</span>
+            </div>
+
+            <!-- LOGIN -->
+
+            <div id="loginForm">
+
+                <div class="auth-heading">
+
+                    <h2>Welcome back 👋</h2>
+
+                    <p>
+                        Continue your learning journey.
+                    </p>
+
+                </div>
+
+                <label>Email</label>
+
+                <input
+                    id="loginEmail"
+                    type="email"
+                    placeholder="you@example.com"
+                >
+
+                <label>Password</label>
+
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="••••••••"
+                >
+
+                <button
+                    class="primary-btn full-btn"
+                    onclick="login()"
+                >
+                    Sign In →
+                </button>
+
+                <p class="switch-auth">
+
+                    New here?
+
+                    <button onclick="toggleAuth('signup')">
+                        Create an account
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <!-- SIGNUP -->
+
+            <div
+                id="signupForm"
+                class="hidden"
+            >
+
+                <div class="auth-heading">
+
+                    <h2>Create your account ✨</h2>
+
+                    <p>
+                        Let's build your personalized learning space.
+                    </p>
+
+                </div>
+
+                <label>Full Name</label>
+
+                <input
+                    id="signupName"
+                    type="text"
+                    placeholder="Your name"
+                >
+
+                <label>Email</label>
+
+                <input
+                    id="signupEmail"
+                    type="email"
+                    placeholder="you@example.com"
+                >
+
+                <label>Password</label>
+
+                <input
+                    id="signupPassword"
+                    type="password"
+                    placeholder="Create a password"
+                >
+
+                <button
+                    class="primary-btn full-btn"
+                    onclick="signup()"
+                >
+                    Create Account →
+                </button>
+
+                <p class="switch-auth">
+
+                    Already have an account?
+
+                    <button onclick="toggleAuth('login')">
+                        Sign in
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= APP ================= -->
+
+<div id="appPage" class="page">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            AI<span>Teacher</span>
+        </div>
+
+        <div class="user-mini">
+
+            <div
+                class="avatar"
+                id="sidebarAvatar"
+            >
+                S
+            </div>
+
+            <div>
+
+                <strong id="sidebarName">
+                    Student
+                </strong>
+
+                <small>
+                    Learning mode
+                </small>
+
+            </div>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <button
+                class="side-link active"
+                onclick="showSection('dashboard', this)"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <button
+                class="side-link"
+                onclick="showSection('subjects', this)"
+            >
+                <span>▣</span>
+                My Subjects
+            </button>
+
+            <button
+                class="side-link"
+                onclick="showSection('teacher', this)"
+            >
+                <span>✦</span>
+                AI Teacher
+            </button>
+
+            <button
+                class="side-link"
+                onclick="showSection('quiz', this)"
+            >
+                <span>✓</span>
+                Quiz
+            </button>
+
+            <button
+                class="side-link"
+                onclick="showSection('progress', this)"
+            >
+                <span>◔</span>
+                Progress
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="side-link"
+                onclick="showSection('profile', this)"
+            >
+                <span>◯</span>
+                Profile
+            </button>
+
+            <button
+                class="side-link logout"
+                onclick="logout()"
+            >
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN APP -->
+
+    <main class="app-main">
+
+        <!-- MOBILE HEADER -->
+
+        <header class="mobile-header">
+
+            <div class="logo">
+                <span class="logo-icon">✦</span>
+                AI<span>Teacher</span>
+            </div>
+
+            <button onclick="toggleSidebar()">
+                ☰
+            </button>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section
+            id="dashboard"
+            class="app-section active-section"
+        >
+
+            <header class="top-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        WELCOME BACK
+                    </p>
+
+                    <h1>
+                        Hello,
+                        <span id="welcomeName">
+                            Student
+                        </span>
+                        👋
+                    </h1>
+
+                    <p class="muted">
+                        What would you like to learn today?
+                    </p>
+
+                </div>
+
+                <div
+                    class="profile-avatar"
+                    onclick="showSection('profile')"
+                >
+                    S
+                </div>
+
+            </header>
+
+
+            <!-- HERO -->
+
+            <div class="dashboard-hero">
+
+                <div class="dashboard-hero-text">
+
+                    <div class="badge">
+                        ✦ AI Teacher is ready
+                    </div>
+
+                    <h2>
+                        Turn your study material
+                        into an <span>AI lesson.</span>
+                    </h2>
+
+                    <p>
+                        Upload your textbook, notes or presentation.
+                        Your AI Teacher will understand it and help
+                        you learn.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="document.getElementById('documentInput').click()"
+                    >
+                        Upload Study Material →
+                    </button>
+
+                    <input
+                        id="documentInput"
+                        type="file"
+                        hidden
+                        accept=".pdf,.docx,.pptx,.txt"
+                    >
+
+                </div>
+
+                <div class="dashboard-orb">
+
+                    <div class="mini-orb">
+                        ✦
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="uploadStatus"
+                class="upload-status hidden"
+            >
+                Processing your study material...
+            </div>
+
+
+            <!-- OVERVIEW -->
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        YOUR LEARNING
+                    </p>
+
+                    <h2>
+                        Overview
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <span>
+                        Lessons
+                    </span>
+
+                    <strong id="lessonCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <span>
+                        Quiz Score
+                    </span>
+
+                    <strong id="quizScore">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🔥
+                    </div>
+
+                    <span>
+                        Day Streak
+                    </span>
+
+                    <strong>
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ◔
+                    </div>
+
+                    <span>
+                        Progress
+                    </span>
+
+                    <strong id="overallProgress">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT LEARNING -->
+
+            <div class="content-grid">
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                CONTINUE
+                            </p>
+
+                            <h3>
+                                Recent Learning
+                            </h3>
+
+                        </div>
+
+                        <button
+                            class="text-btn"
+                            onclick="showSection('subjects')"
+                        >
+                            View all →
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="documentsList"
+                        class="document-list"
+                    >
+
+                        <div class="empty-state">
+
+                            <div>
+                                📖
+                            </div>
+
+                            <h3>
+                                No lessons yet
+                            </h3>
+
+                            <p>
+                                Upload your first study material
+                                to start learning.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK START -->
+
+                <div class="panel quick-panel">
+
+                    <p class="eyebrow">
+                        QUICK START
+                    </p>
+
+                    <h3>
+                        How do you want to learn?
+                    </h3>
+
+                    <button
+                        class="quick-action"
+                        onclick="showSection('teacher')"
+                    >
+
+                        <span>
+                            🤖
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                AI Teacher
+                            </strong>
+
+                            <small>
+                                Learn with your teacher
+                            </small>
+
+                        </div>
+
+                        <b>
+                            →
+                        </b>
+
+                    </button>
+
+
+                    <button
+                        class="quick-action"
+                        onclick="showSection('quiz')"
+                    >
+
+                        <span>
+                            📝
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Take a Quiz
+                            </strong>
+
+                            <small>
+                                Test your knowledge
+                            </small>
+
+                        </div>
+
+                        <b>
+                            →
+                        </b>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUBJECTS ================= -->
+
+        <section
+            id="subjects"
+            class="app-section"
+        >
+
+            <div class="section-page-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        LEARNING SPACE
+                    </p>
+
+                    <h1>
+                        My Subjects
+                    </h1>
+
+                    <p class="muted">
+                        Everything you're currently learning.
+                    </p>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="document.getElementById('documentInput').click()"
+                >
+                    + Add Material
+                </button>
+
+            </div>
+
+
+            <div
+                id="subjectGrid"
+                class="subject-grid"
+            >
+
+                <div class="subject-card">
+
+                    <div class="subject-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Start your first subject
+                    </h3>
+
+                    <p>
+                        Upload study material to create
+                        your personalized learning space.
+                    </p>
+
+                    <button
+                        class="outline-btn"
+                        onclick="document.getElementById('documentInput').click()"
+                    >
+                        Upload Material
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI TEACHER ================= -->
+
+        <section
+            id="teacher"
+            class="app-section"
+        >
+
+            <div class="teacher-layout">
+
+                <!-- TEACHER VIDEO -->
+
+                <div class="teacher-video">
+
+                    <div class="teacher-top">
+
+                        <button
+                            class="back-small"
+                            onclick="showSection('dashboard')"
+                        >
+                            ← Back
+                        </button>
+
+                        <span class="live-pill">
+                            ● AI TEACHER
+                        </span>
+
+                    </div>
+
+
+                    <!-- ANIMATED TEACHER -->
+
+                    <div class="teacher-avatar-area">
+
+                        <div class="avatar-stage">
+
+                            <div class="avatar-glow"></div>
+
+                            <div class="ai-teacher-avatar">
+
+                                <div class="avatar-head">
+
+                                    <div class="avatar-hair"></div>
+
+                                    <div class="avatar-face">
+
+                                        <div class="eye left-eye"></div>
+
+                                        <div class="eye right-eye"></div>
+
+                                        <div class="nose"></div>
+
+                                        <div class="mouth">
+                                            <span></span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="avatar-body">
+
+                                    <div class="avatar-collar"></div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="speaking-bars">
+
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <p id="teacherStatus">
+                            Your AI Teacher is ready
+                        </p>
+
+                    </div>
+
+
+                    <!-- CONTROLS -->
+
+                    <div class="video-controls">
+
+                        <button>
+                            ↶
+                        </button>
+
+                        <button
+                            class="play-btn"
+                            onclick="toggleTeacher()"
+                        >
+                            ▶
+                        </button>
+
+                        <button>
+                            ↷
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TEACHER CONTENT -->
+
+                <div class="teacher-content">
+
+                    <p class="eyebrow">
+                        CURRENT LESSON
+                    </p>
+
+                    <h1 id="currentLesson">
+                        Select a lesson
+                    </h1>
+
+                    <p class="muted">
+                        Your AI Teacher will explain concepts
+                        from your uploaded study material.
+                    </p>
+
+
+                    <!-- LESSON CONTENT -->
+
+                    <div
+                        id="lessonContent"
+                        class="lesson-content"
+                    >
+                    </div>
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="lesson-actions">
+
+                        <button
+                            class="lesson-action active"
+                        >
+                            📖 Explanation
+                        </button>
+
+                        <button
+                            class="lesson-action"
+                        >
+                            💡 Examples
+                        </button>
+
+                        <button
+                            class="lesson-action"
+                            onclick="generateQuiz()"
+                        >
+                            📝 Quiz
+                        </button>
+
+                    </div>
+
+
+                    <!-- TEACHER CHAT -->
+
+                    <div class="teacher-chat">
+
+                        <div class="chat-message teacher-message">
+
+                            <div class="chat-avatar">
+                                ✦
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    AI Teacher
+                                </strong>
+
+                                <p>
+                                    Hello! I'm ready to teach you.
+                                    Upload study material and I'll
+                                    explain it step by step.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chat-input">
+
+                            <input
+                                type="text"
+                                placeholder="Ask your teacher anything..."
+                                onkeydown="if(event.key === 'Enter') sendTeacherMessage()"
+                            >
+
+                            <button
+                                onclick="sendTeacherMessage()"
+                            >
+                                ↑
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUIZ ================= -->
+
+        <section
+            id="quiz"
+            class="app-section"
+        >
+
+            <div class="section-page-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        KNOWLEDGE CHECK
+                    </p>
+
+                    <h1>
+                        Quiz
+                    </h1>
+
+                    <p class="muted">
+                        Test what you've learned.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="quizContainer"
+                class="quiz-card"
+            >
+
+                <div class="quiz-header">
+
+                    <span>
+                        Ready to test your knowledge?
+                    </span>
+
+                    <div class="quiz-progress">
+
+                        <div
+                            id="quizProgressBar"
+                            style="width:0%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <h2>
+                    Your AI-generated quiz will appear here.
+                </h2>
+
+                <p class="muted">
+                    Complete a lesson first and your AI Teacher
+                    can generate questions based on your material.
+                </p>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="generateQuiz()"
+                >
+                    Generate Quiz →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROGRESS ================= -->
+
+        <section
+            id="progress"
+            class="app-section"
+        >
+
+            <div class="section-page-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        YOUR JOURNEY
+                    </p>
+
+                    <h1>
+                        Learning Progress
+                    </h1>
+
+                    <p class="muted">
+                        See how far you've come.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="progress-cards">
+
+                <div class="progress-big-card">
+
+                    <span>
+                        Overall Progress
+                    </span>
+
+                    <strong id="progressOverall">
+                        0%
+                    </strong>
+
+                    <div class="progress-bar">
+
+                        <div
+                            id="progressOverallBar"
+                            style="width:0%"
+                        ></div>
+
+                    </div>
+
+                    <small>
+                        Keep learning to build your progress.
+                    </small>
+
+                </div>
+
+
+                <div class="progress-big-card">
+
+                    <span>
+                        Quiz Average
+                    </span>
+
+                    <strong id="progressQuiz">
+                        0%
+                    </strong>
+
+                    <div class="progress-bar">
+
+                        <div
+                            id="progressQuizBar"
+                            style="width:0%"
+                        ></div>
+
+                    </div>
+
+                    <small>
+                        Complete quizzes to track your score.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROFILE ================= -->
+
+        <section
+            id="profile"
+            class="app-section"
+        >
+
+            <div class="section-page-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        ACCOUNT
+                    </p>
+
+                    <h1>
+                        Your Profile
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-card">
+
+                <div
+                    class="large-avatar"
+                    id="profileAvatar"
+                >
+                    S
+                </div>
+
+                <div class="profile-info">
+
+                    <h2 id="profileName">
+                        Student
+                    </h2>
+
+                    <p id="profileEmail">
+                        student@example.com
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= ONBOARDING ================= -->
+
+<div
+    id="onboardingPage"
+    class="page"
+>
+
+    <div class="onboarding-container">
+
+        <div class="onboarding-logo">
+
+            <span class="logo-icon">
+                ✦
+            </span>
+
+            AI<span>Teacher</span>
+
+        </div>
+
+
+        <div class="onboarding-progress">
+
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div id="onboardingContent">
+
+            <p class="eyebrow">
+                LET'S PERSONALIZE YOUR EXPERIENCE
+            </p>
+
+            <h1>
+                What are you learning?
+            </h1>
+
+            <p class="muted">
+                Choose the subjects you want to explore.
+            </p>
+
+
+            <div class="choice-grid">
+
+                <button
+                    class="choice-card"
+                    onclick="selectChoice(this)"
+                >
+                    💻
+                    <strong>
+                        Computer Science
+                    </strong>
+                </button>
+
+
+                <button
+                    class="choice-card"
+                    onclick="selectChoice(this)"
+                >
+                    🧮
+                    <strong>
+                        Mathematics
+                    </strong>
+                </button>
+
+
+                <button
+                    class="choice-card"
+                    onclick="selectChoice(this)"
+                >
+                    🔬
+                    <strong>
+                        Science
+                    </strong>
+                </button>
+
+
+                <button
+                    class="choice-card"
+                    onclick="selectChoice(this)"
+                >
+                    🤖
+                    <strong>
+                        Artificial Intelligence
+                    </strong>
+                </button>
+
+
+                <button
+                    class="choice-card"
+                    onclick="selectChoice(this)"
+                >
+                    🌐
+                    <strong>
+                        Networking
+                    </strong>
+                </button>
+
+
+                <button
+                    class="choice-card"
+                    onclick="selectChoice(this)"
+                >
+                    📖
+                    <strong>
+                        Other
+                    </strong>
+                </button>
+
+            </div>
+
+
+            <button
+                class="primary-btn onboarding-next"
+                onclick="finishOnboarding()"
+            >
+                Continue →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="app.js"></script>
+
+</body>
+</html>
